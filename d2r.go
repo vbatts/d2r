@@ -14,6 +14,10 @@ var (
 )
 
 func main() {
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage of %s: %s [OPTIONS] <file.tar|->\n  (where '-' is from stdin)\n", os.Args[0], os.Args[0])
+		flag.PrintDefaults()
+	}
 	flag.Parse()
 
 	if *flVersion {

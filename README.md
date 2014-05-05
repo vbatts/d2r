@@ -3,10 +3,16 @@ d2r
 
 Create a static docker-registry filesystem, from the output of a `docker save`
 
+Supports updating existing registry and repostory:tags
+
 Usage
 =====
 
-	d2r -h
+	$> d2r -h
+	Usage of ./d2r: ./d2r [OPTIONS] <file.tar|->
+	  (where '-' is from stdin)
+	  -o="./static/": directory to land the output registry files
+	  -v=false: show version
 
 Building
 ========
@@ -56,22 +62,16 @@ Example
 	./static/v1/images/924a401326b8f7fe65281647378b69f918aeb161678ec8a4209e074f4c5beb5f/tarsum
 	./static/v1/images/924a401326b8f7fe65281647378b69f918aeb161678ec8a4209e074f4c5beb5f/json
 	./static/v1/images/924a401326b8f7fe65281647378b69f918aeb161678ec8a4209e074f4c5beb5f/ancestry
-	./static/v1/images/511136ea3c5a64f264b78b5433614aec563103b4d4702f3ba7d4d2698e22c158
-	./static/v1/images/511136ea3c5a64f264b78b5433614aec563103b4d4702f3ba7d4d2698e22c158/layer
-	./static/v1/images/511136ea3c5a64f264b78b5433614aec563103b4d4702f3ba7d4d2698e22c158/tarsum
-	./static/v1/images/511136ea3c5a64f264b78b5433614aec563103b4d4702f3ba7d4d2698e22c158/json
-	./static/v1/images/783f460032a82c15b584f92588fe3a4b748fb2d9012a0db46a65ad29878f9d3b
-	./static/v1/images/783f460032a82c15b584f92588fe3a4b748fb2d9012a0db46a65ad29878f9d3b/layer
-	./static/v1/images/783f460032a82c15b584f92588fe3a4b748fb2d9012a0db46a65ad29878f9d3b/tarsum
-	./static/v1/images/783f460032a82c15b584f92588fe3a4b748fb2d9012a0db46a65ad29878f9d3b/json
-	./static/v1/images/783f460032a82c15b584f92588fe3a4b748fb2d9012a0db46a65ad29878f9d3b/ancestry
-	./static/v1/images/58394af373423902a1b97f209a31e3777932d9321ef10e64feaaa7b4df609cf9
-	./static/v1/images/58394af373423902a1b97f209a31e3777932d9321ef10e64feaaa7b4df609cf9/layer
-	./static/v1/images/58394af373423902a1b97f209a31e3777932d9321ef10e64feaaa7b4df609cf9/tarsum
-	./static/v1/images/58394af373423902a1b97f209a31e3777932d9321ef10e64feaaa7b4df609cf9/json
-	./static/v1/images/58394af373423902a1b97f209a31e3777932d9321ef10e64feaaa7b4df609cf9/ancestry
+	[...]
 	$ docker save debian | d2r -o ./static/ - 
+	[...]
 
+
+TODO
+====
+
+* decouple when the saved output has a registry in the image name
+* perhaps make the tarsum optional? ...
 
 LICENSE
 =======
