@@ -67,6 +67,23 @@ Example
 	[...]
 
 
+Testing
+=======
+
+The ./static/ (or whatever chosen) directory is servable as static content on
+any webserver, though for convenience you can use the an included simple file
+server from ./fsrv
+
+	$> go get github.com/vbatts/d2r/fsrv
+	$> fsrv ./static/
+
+or
+
+	$> git clone git://github.com/vbatts/d2r
+	$> cd d2r
+	$> make fsrv
+
+
 TODO
 ====
 

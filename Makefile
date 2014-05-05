@@ -22,6 +22,12 @@ build: .get
 .tmp:
 	@mkdir -p ./tmp && touch $@
 
+fsrv: fsrv/fsrv
+	./fsrv/fsrv
+
+fsrv/fsrv: fsrv/main.go .get
+	GOPATH=$(GOPATH) go build -o ./fsrv/fsrv ./fsrv/
+
 clean:
-	rm -rf ./tmp .get .tmp .gopath
+	rm -rf ./tmp .get .tmp .gopath d2r ./fsrv/fsrv
 
